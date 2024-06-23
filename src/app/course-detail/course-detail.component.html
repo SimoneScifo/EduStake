@@ -1,0 +1,17 @@
+<div *ngIf="course" class="card mt-4">
+    <img [src]="course.imageUrl" class="card-img-top course-image" alt="{{ course.title }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ course.title }}</h5>
+      <p class="card-text">{{ course.instructor }}</p>
+      <p class="card-text">
+        <small class="text-muted">{{ course.rating }} ★ ({{ course.reviews }})</small>
+      </p>
+      <p class="card-text">
+        <strong class="text-primary">{{ course.price | currency:'EUR' }}</strong>
+      </p>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" [src]="course.videoUrl | safeUrl" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  

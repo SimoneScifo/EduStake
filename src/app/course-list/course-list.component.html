@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let course of courses">
+        <div class="card mb-4 shadow-sm" (click)="selectCourse(course)">
+          <img [src]="course.imageUrl" class="card-img-top" alt="{{ course.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ course.title }}</h5>
+            <p class="card-text">{{ course.instructor }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <small class="text-muted">{{ course.rating }} ★ ({{ course.reviews }})</small>
+              </div>
+              <div>
+                <strong class="text-primary">{{ course.price | currency:'EUR' }}</strong>
+              </div>
+            </div>
+            <div *ngIf="course.rating >= 4.5" class="mt-2">
+              <span class="badge badge-success">Best seller</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
