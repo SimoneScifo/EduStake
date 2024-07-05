@@ -1,17 +1,27 @@
-<div *ngIf="course" class="card mt-4">
-    <img [src]="course.imageUrl" class="card-img-top course-image" alt="{{ course.title }}">
-    <div class="card-body">
-      <h5 class="card-title">{{ course.title }}</h5>
-      <p class="card-text">{{ course.instructor }}</p>
-      <p class="card-text">
-        <small class="text-muted">{{ course.rating }} ★ ({{ course.reviews }})</small>
-      </p>
-      <p class="card-text">
-        <strong class="text-primary">{{ course.price | currency:'EUR' }}</strong>
-      </p>
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" [src]="course.videoUrl | safeUrl" allowfullscreen></iframe>
+<div *ngIf="course" class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <img [src]="course.imageUrl" class="card-img-top course-image-small" alt="{{ course.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ course.title }}</h5>
+          <p class="card-text">{{ course.instructor }}</p>
+          <p class="card-text">
+            <small class="text-muted">{{ course.rating }} ★ ({{ course.reviews }})</small>
+          </p>
+          <p class="card-text">
+            <strong class="text-primary">{{ course.price | currency:'EUR' }}</strong>
+          </p>
+          <button *ngIf="!paymentConfirmed" class="btn btn-primary" (click)="processPayment()">Buy Course</button>
+          <div *ngIf="paymentError" class="alert alert-danger mt-3">Payment failed. Please try again.</div>
+          <div *ngIf="paymentConfirmed" class="embed-responsive embed-responsive-16by9 mt-3">
+            <iframe class="embed-responsive-item" [src]="course.videoUrl | safeUrl" allowfullscreen></iframe>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  
+</div>
+
+<app-payment-modal *ngIf="showPaymentModal" (paymentConfirmed)="handlePaymentConfirmation($event)"></app-payment-modal>
+<app-stake-proposal-modal *ngIf="showStakeProposalModal" (stakeConfirmed)="handleStakeConfirmation($event)"></app-stake-proposal-modal>

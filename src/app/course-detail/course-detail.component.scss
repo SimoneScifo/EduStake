@@ -1,45 +1,4 @@
-/* Ensure the container is styled properly */
-.card {
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-  }
-  
-  /* Style the image to be smaller */
-  .course-image {
-    width: 100%;
-    max-width: 200px; /* Adjust this value to make the image smaller */
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* Other styles for responsiveness and aesthetics */
-  .embed-responsive {
-    position: relative;
-    display: block;
-    width: 100%;
-    padding: 0;
-    overflow: hidden;
-  }
-  
-  .embed-responsive::before {
-    display: block;
-    content: '';
-  }
-  
-  .embed-responsive-16by9::before {
-    padding-top: 56.25%; /* 16:9 aspect ratio */
-  }
-  
-  .embed-responsive-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
-    border: 0;
-  }
-  
+.course-image-small {
+  max-width: 200px;
+  margin: 0 auto;
+}
