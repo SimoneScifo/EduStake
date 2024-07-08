@@ -1,0 +1,27 @@
+<div class="login-popup" *ngIf="popupService.popupVisible$ | async">
+  <div class="container">
+    <img src="https://raw.githubusercontent.com/tonsag/tokenLogo/main/catLogo.png" alt="Logo" class="logo">
+    <h1>Benvenuto!</h1>
+    <button class="btn btn-login" (click)="showLogin()">Login</button>
+    <button class="btn btn-register" (click)="showRegister()">Registrati</button>
+
+    <div id="login-form" class="form-container" [ngClass]="{'show': isLoginVisible}">
+      <h2>Login</h2>
+      <input type="text" id="login-username" class="input-field" placeholder="Username">
+      <input type="password" id="login-password" class="input-field" placeholder="Password">
+      <button class="btn btn-login" (click)="submitLogin()">Accedi</button>
+      <button class="btn btn-login" (click)="connectWalletLogin()">Collega Wallet Phantom</button>
+      <input type="hidden" id="login-wallet" class="input-field" placeholder="Wallet Public Key">
+    </div>
+
+    <div id="register-form" class="form-container" [ngClass]="{'show': isRegisterVisible}">
+      <h2>Registrati</h2>
+      <input type="text" id="register-username" class="input-field" placeholder="Username">
+      <input type="email" id="register-email" class="input-field" placeholder="Email">
+      <input type="password" id="register-password" class="input-field" placeholder="Password">
+      <button class="btn btn-register" (click)="connectWallet()">Collega Wallet</button>
+      <input type="hidden" id="register-wallet" class="input-field" placeholder="Wallet Public Key">
+      <button class="btn btn-register" (click)="submitRegister()">Registrati</button>
+    </div>
+  </div>
+</div>

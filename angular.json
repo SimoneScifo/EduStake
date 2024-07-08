@@ -63,6 +63,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+                  "proxyConfig": "proxy.conf.json"
+                      },
           "configurations": {
             "production": {
               "buildTarget": "EduStake:build:production"
@@ -99,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "9d2faa0b-39e4-487c-82de-9bd95c0a75b2"
   }
 }
