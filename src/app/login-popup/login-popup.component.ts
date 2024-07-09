@@ -66,49 +66,55 @@ export class LoginPopupComponent {
   }
 
   async submitRegister() {
-    const username = (document.getElementById('register-username') as HTMLInputElement).value;
-    const email = (document.getElementById('register-email') as HTMLInputElement).value;
-    const password = (document.getElementById('register-password') as HTMLInputElement).value;
-    
-    console.log(username, email, password);
-    //
-    //if (username === '' || email === '' || password === '') {
-    //  alert('Per favore, compila tutti i campi.');
-    //  return;
-    //}
+    const username = 'ciao';
+    const email = 'ciao';
+    const password = 'ciao';
+  
+    const bodyText = `username=${username}&email=${email}&password=${password}`;
+  
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain'
+      },
+      body: bodyText
+    };
   
     try {
-      const response = await fetch('/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, email, password })
-      });
+      console.log('Invio della richiesta a http://127.0.0.1:4200/register');
+      //const response = await fetch('http://127.0.0.1:4200/register', options);
   
-      // Verifica che la risposta sia in formato JSON
-      const contentType = response.headers.get('content-type');
-
-      console.log(contentType);
-      if (!contentType || !contentType.includes('application/json')) {
-        throw new TypeError("La risposta non è in formato JSON");
-      }
+      //if (!response.ok) {
+      //  throw new Error(`HTTP error! status: ${response.status}`);
+      //}
   
-      const data = await response.json();
-      if (data.success) {
-        alert(data.message);
-        this.popupService.hidePopup();
-        this.router.navigate(['/homepage']);
-      } else {
-        alert(data.message);
-      }
-    } catch (error) {
-      console.error('Errore:', error);
-      alert(`Errore durante la registrazione:`);
-    }
+      //const contentType = response.headers.get('content-type');
+      // console.log('Content-Type:', contentType);
+  
+      // if (!contentType || !contentType.includes('text/plain')) {
+      //   const textResponse = await response.text();
+      //   console.error('La risposta non è in formato text/plain:', textResponse);
+      //   throw new TypeError("La risposta non è in formato text/plain");
+      // }
+  
+      //const data = await response.text();
+      console.log('Passo a HomePage');
+      this.popupService.hidePopup();
+      this.router.navigate(['/homepage']);
+      
+    //   if (data.includes('success')) { // Supponendo che il server risponda con 'success' in caso di successo
+    //     alert('Registrazione completata con successo');
+    //     this.popupService.hidePopup();
+    //     this.router.navigate(['/homepage']);
+    //   } else {
+    //     alert('Errore durante la registrazione');
+    //   }
+     } catch (error) {
+       console.error('Errore durante la registrazione:', error);
+       alert(`Errore durante la registrazione:`);
+     }
   }
   
-
   async connectWallet() {
     if ((window as any).solana && (window as any).solana.isPhantom) {
       try {

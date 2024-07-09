@@ -15,7 +15,7 @@
 </nav>
 
 <router-outlet></router-outlet>
-<app-login-popup *ngIf="popupService.popupVisible$ | async"></app-login-popup>
+
 
 <app-course-list (selectedCourse)="selectCourse($event)"></app-course-list>
 <app-course-detail [course]="selectedCourse"></app-course-detail>
